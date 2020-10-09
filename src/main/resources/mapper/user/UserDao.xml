@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.user.dao.UserDao">
+    <insert id="saveUser" parameterType="com.fs.user.entity.UserEntity">
+        INSERT INTO `spmy_curd`.`user` (
+            `id`,
+            `username`,
+            `password`,
+            `status`,
+            `createtime`
+        )
+        VALUES
+	        (
+	            NULL,
+	            #{username},
+	            #{password},
+	            #{status},
+	            #{createtime}
+	        );
+    </insert>
+
+    <delete id="delById" parameterType="int">
+        delete from user where id = #{id}
+    </delete>
+
+    <select id="getAll" resultType="com.fs.user.entity.UserEntity" parameterType="java.util.Map">
+        select * from user;
+    </select>
+</mapper>
