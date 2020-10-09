@@ -19,6 +19,14 @@
 	            #{createtime}
 	        );
     </insert>
+    <update id="updateUserById" parameterType="com.fs.user.entity.UserEntity" >
+        UPDATE user
+        SET
+            username = #{username},
+            password = #{password}
+        WHERE
+           id = ${id};
+    </update>
 
     <delete id="delById" parameterType="int">
         delete from user where id = #{id}
@@ -27,4 +35,9 @@
     <select id="getAll" resultType="com.fs.user.entity.UserEntity" parameterType="java.util.Map">
         select * from user;
     </select>
+
+    <select id="getUserById" resultType="com.fs.user.entity.UserEntity" parameterType="int">
+        select * from user where id = #{id}
+    </select>
+
 </mapper>

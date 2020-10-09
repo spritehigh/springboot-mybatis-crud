@@ -5,10 +5,7 @@ import com.fs.user.service.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +15,7 @@ import java.util.Map;
  * @RestController=@Controller+@ResponseBody
  */
 @Controller
-@RequestMapping("user")
+@RequestMapping(value = "user")
 public class UserController {
     @Autowired
     UserService userService;
@@ -40,6 +37,21 @@ public class UserController {
     @ResponseBody
     public String save(@RequestBody UserEntity userEntity){
         userService.saveUser(userEntity);
+        return "success";
+    }
+
+    //根据Id查询用户信息
+    @RequestMapping("/getUserById")
+    @ResponseBody
+    public UserEntity getUserById(Integer id){
+        return userService.getUserById(id);
+    }
+
+    //根据Id修改用户信息
+    @RequestMapping("/updateUserById")
+    @ResponseBody
+    public String updateUserById(@RequestBody UserEntity userEntity){
+        userService.updateUserById(userEntity);
         return "success";
     }
 }

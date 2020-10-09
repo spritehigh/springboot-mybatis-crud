@@ -12,4 +12,10 @@ public interface UserService {
 
     //保存用户
     public void saveUser(UserEntity userEntity);
+
+    //根据Id查询用户
+    public UserEntity getUserById(Integer id);
+
+    //根据Id修改用户
+    public void updateUserById(UserEntity userEntity);
 }

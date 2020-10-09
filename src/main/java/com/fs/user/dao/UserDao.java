@@ -14,4 +14,8 @@ public interface UserDao {
     void delById(Integer id);
 
     public void saveUser(UserEntity userEntity);
+
+    public UserEntity getUserById(Integer id);
+
+    public void updateUserById(UserEntity userEntity);
 }
